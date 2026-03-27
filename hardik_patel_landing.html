@@ -368,6 +368,31 @@
                 padding-bottom: max(12px, env(safe-area-inset-bottom));
             }
         }
+
+
+        <!-- ADD THIS inside <head> (just before </style>) -->
+<script>
+function downloadVCard() {
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Hardik Patel
+ORG:Coninfra Machinery Pvt. Ltd.
+TITLE:Director - Business Development
+TEL;TYPE=CELL:+919099941641
+EMAIL:hpatel@coninfra.in
+END:VCARD`;
+
+    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Hardik_Patel.vcf';
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+}
+</script>
     </style>
 </head>
 <body>
@@ -396,6 +421,12 @@
                     <a href="mailto:hpatel@coninfra.in">hpatel@coninfra.in</a>
                 </div>
             </div>
+             <!-- Company Name -->
+         <div style="margin-bottom: 20px; text-align: left;">
+        <h2 style="color: #B8282E; font-size: 1.2em;">
+         Coninfra Machinery Pvt. Ltd.
+        </h2>
+        </div>
 
             <!-- Offices Section -->
             <div class="section">
@@ -404,14 +435,14 @@
                 </div>
 
                 <div class="office-box">
-                    <div class="office-title">Registered Office</div>
+                    <div class="office-title">Head Office</div>
                     <p>504, Sahitya Business Park</p>
                     <p>SP Ring Road, Nikol</p>
                     <p>Ahmedabad - 382350, INDIA</p>
                 </div>
 
                 <div class="office-box">
-                    <div class="office-title">Work Place</div>
+                    <div class="office-title">Factory Workshop</div>
                     <p>Plot No. E-377 & 378</p>
                     <p>Sanand - II Industrial Estate</p>
                     <p>Bol GIDC, Sanand</p>
@@ -446,8 +477,13 @@
 
             <!-- CTA Buttons -->
             <div class="cta-buttons">
+                        <button onclick="downloadVCard()" class="btn btn-primary">
+                       💾 Save Contact Details
+                  </button>
+                
                 <a href="tel:+919099941641" class="btn btn-primary">📞 Call Now</a>
                 <a href="mailto:hpatel@coninfra.in" class="btn btn-secondary">📧 Send Email</a>
+               
               
             </div>
         </div>
