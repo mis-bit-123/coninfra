@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coninfra Machinery - Contact Pages</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
+        }
+        
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            max-width: 500px;
+        }
+        
+        h1 {
+            color: #B8282E;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        a {
+            display: block;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn-saumil {
+            background: #B8282E;
+            color: white;
+        }
+        
+        .btn-saumil:hover {
+            background: #8B1F24;
+            transform: scale(1.05);
+        }
+        
+        .btn-hardik {
+            background: #666;
+            color: white;
+        }
+        
+        .btn-hardik:hover {
+            background: #333;
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏭 CONINFRA MACHINERY</h1>
+        <p>Select Contact Person</p>
+        
+        <div class="button-group">
+            <a href="saumil_shah_mobile.html" class="btn-saumil">
+                👤 Saumil Shah - Managing Director
+            </a>
+            
+            <a href="hardik_patel_mobile.html" class="btn-hardik">
+                👤 Hardik Patel - Director - Business Development
+            </a>
+        </div>
+        
+        <div class="footer">
+            <p>Select above to view contact details</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+5. **Commit karo** ("Create index.html")
+
+✅ **index.html created!**
+
+---
+
+### **STEP 3: Re-Upload HTML Files Properly**
+
+1. Repository mein jaao
+2. "Add file" → "Upload files" click karo
+3. **IMPORTANT - Filename Case:**
+```
+   ✅ saumil_shah_mobile.html (lowercase)
+   ✅ hardik_patel_mobile.html (lowercase)
+   ❌ Saumil_Shah_Mobile.html (wrong - uppercase)
+```
+4. Dono files select karo
+5. **Commit karo**
+
+✅ **Files uploaded properly!**
+
+---
+
+### **STEP 4: GitHub Pages Settings Re-Check**
+
+1. Repository → "Settings"
+2. Left sidebar → "Pages"
+3. Check karo:
+```
+   Source: Deploy from a branch ✅
+   Branch: main ✅
+   Folder: / (root) ✅
+```
+4. Save karo
+5. **Wait karo 2-3 minute**
+6. Page refresh karo
+
+✅ **Settings correct!**
+
+---
+
+### **STEP 5: Test Your URLs**
+
+**Open these URLs in browser:**
+```
+ROOT URL (should work now):
+https://yourgithubusername.github.io/coninfra/
+
+Direct URLs:
+https://yourgithubusername.github.io/coninfra/saumil_shah_mobile.html
+https://yourgithubusername.github.io/coninfra/hardik_patel_mobile.html
+```
+
+---
+
+## 🎯 COMPLETE FILE STRUCTURE HONA CHAHIYE:
+```
+coninfra (Repository)
+├─ index.html ⭐ (Main landing page)
+├─ saumil_shah_mobile.html
+├─ hardik_patel_mobile.html
+└─ README.md
