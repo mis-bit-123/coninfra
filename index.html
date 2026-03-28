@@ -6,95 +6,169 @@
     <title>Coninfra Machinery - Contact Pages</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
             background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
+            padding: 20px;
         }
         
         .container {
             background: white;
-            padding: 40px;
-            border-radius: 10px;
+            padding: 40px 30px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             max-width: 500px;
+            width: 100%;
         }
         
         h1 {
             color: #B8282E;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.8em;
+        }
+        
+        .tagline {
+            color: #B8282E;
+            font-size: 0.85em;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
         
         p {
             color: #666;
             margin-bottom: 30px;
+            font-size: 0.95em;
         }
         
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         
         a {
             display: block;
-            padding: 15px 30px;
+            padding: 16px 30px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 10px;
             font-weight: bold;
             transition: all 0.3s;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         
         .btn-saumil {
-            background: #B8282E;
+            background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
             color: white;
         }
         
-        .btn-saumil:hover {
-            background: #8B1F24;
-            transform: scale(1.05);
+        .btn-saumil:hover, .btn-saumil:active {
+            background: linear-gradient(135deg, #8B1F24 0%, #6B1518 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 40, 46, 0.3);
         }
         
         .btn-hardik {
-            background: #666;
+            background: linear-gradient(135deg, #555 0%, #333 100%);
             color: white;
         }
         
-        .btn-hardik:hover {
-            background: #333;
-            transform: scale(1.05);
+        .btn-hardik:hover, .btn-hardik:active {
+            background: linear-gradient(135deg, #333 0%, #111 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
         
         .footer {
-            margin-top: 20px;
-            font-size: 12px;
+            margin-top: 25px;
+            font-size: 0.8em;
             color: #999;
+            line-height: 1.6;
+        }
+
+        .features {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: left;
+            font-size: 0.9em;
+            color: #555;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .features li {
+            padding: 5px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .features li:before {
+            content: "✓";
+            color: #B8282E;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            a {
+                padding: 14px 20px;
+                font-size: 0.95em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🏭 CONINFRA MACHINERY</h1>
-        <p>Select Contact Person</p>
+        <div class="tagline">CONSTRUCT | COMMIT | CONQUER</div>
+        <p>Select Contact Person to View Details</p>
+        
+        <div class="features">
+            <ul>
+                <li>📞 Click to Call Directly</li>
+                <li>📧 Send Email Instantly</li>
+                <li>💾 Save Contact Card</li>
+                <li>📤 Share via WhatsApp/Email</li>
+            </ul>
+        </div>
         
         <div class="button-group">
-            <!-- ✅ FIXED: Changed from saumil_shah_mobile.html to saumil_shah_landing.html -->
-            <a href="saumil_shah_landing.html" class="btn-saumil">
-                👤 Saumil Shah - Managing Director
+            <a href="saumil_shah_final.html" class="btn-saumil">
+                👤 Saumil Shah<br><span style="font-size: 0.85em; opacity: 0.9;">Managing Director</span>
             </a>
             
-            <!-- ✅ FIXED: Changed from hardik_patel_mobile.html to hardik_patel_landing.html -->
-            <a href="hardik_patel_landing.html" class="btn-hardik">
-                👤 Hardik Patel - Director - Business Development
+            <a href="hardik_patel_final.html" class="btn-hardik">
+                👤 Hardik Patel<br><span style="font-size: 0.85em; opacity: 0.9;">Director - Business Development</span>
             </a>
         </div>
         
         <div class="footer">
-            <p>Select above to view contact details</p>
+            <p>&copy; 2026 Coninfra Machinery Pvt. Ltd. | All Rights Reserved</p>
+            <p>Scan QR code to view instant contact details</p>
         </div>
     </div>
 </body>
