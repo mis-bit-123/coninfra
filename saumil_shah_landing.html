@@ -233,12 +233,18 @@
             opacity: 0.8;
         }
 
-        /* CTA Buttons */
+        /* CTA Buttons Container */
         .cta-buttons {
             display: flex;
             flex-direction: column;
             gap: 10px;
             margin-bottom: 20px;
+        }
+
+        /* Two-column button wrapper for Call Now and Send Email */
+        .buttons-row {
+            display: flex;
+            gap: 10px;
         }
 
         .btn {
@@ -250,18 +256,17 @@
             cursor: pointer;
             transition: all 0.2s;
             text-decoration: none;
-            display: block;
-            text-align: center;
-            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            min-height: 50px;
         }
 
         .btn-primary {
             background: #B8282E;
             color: white;
+            flex: 1;
         }
 
         .btn-primary:active {
@@ -273,11 +278,24 @@
             background: white;
             color: #B8282E;
             border: 2px solid #B8282E;
+            flex: 1;
         }
 
         .btn-secondary:active {
             background: #f5f5f5;
             opacity: 0.85;
+        }
+
+        /* Save Contact Details button - full width */
+        .btn-save {
+            width: 100%;
+            background: #B8282E;
+            color: white;
+        }
+
+        .btn-save:active {
+            opacity: 0.85;
+            transform: scale(0.98);
         }
 
         /* Footer */
@@ -337,18 +355,19 @@
             .contact-item, .office-box, .products-list {
                 padding: 12px;
             }
-        }
 
-        /* Tablet/Desktop */
-        @media (min-width: 768px) {
-            .cta-buttons {
-                flex-direction: row;
+            .buttons-row {
+                flex-direction: column;
+                gap: 10px;
             }
 
             .btn {
                 flex: 1;
             }
+        }
 
+        /* Tablet/Desktop */
+        @media (min-width: 768px) {
             .container {
                 max-width: 600px;
                 margin: 20px auto;
@@ -356,6 +375,21 @@
 
             body {
                 padding: 20px;
+            }
+
+            /* Keep buttons in row on desktop */
+            .buttons-row {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .btn {
+                flex: 1;
+            }
+
+            .btn-save {
+                width: 100%;
+                flex: none;
             }
         }
 
@@ -368,13 +402,47 @@
                 padding-bottom: max(12px, env(safe-area-inset-bottom));
             }
         }
+
+        /* Company Name */
+        .company-name-section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .company-name-section h2 {
+            color: #B8282E;
+            font-size: 1.2em;
+            margin: 0;
+        }
     </style>
+
+    <script>
+function downloadVCard() {
+    const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Saumil Shah
+ORG:Coninfra Machinery Pvt. Ltd.
+TITLE:Managing Director
+TEL;TYPE=CELL:+919099941311
+EMAIL:sshah@coninfra.in
+END:VCARD`;
+
+    const blob = new Blob([vCardData], { type: 'text/vcard' });
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Saumil_Shah.vcf';
+    a.click();
+
+    window.URL.revokeObjectURL(url);
+}
+</script>
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
-         
         </div>
 
         <!-- Person Card -->
@@ -397,6 +465,11 @@
                 </div>
             </div>
 
+            <!-- Company Name -->
+            <div class="company-name-section">
+                <h2>Coninfra Machinery Pvt. Ltd.</h2>
+            </div>
+
             <!-- Offices Section -->
             <div class="section">
                 <div class="section-title">
@@ -404,14 +477,14 @@
                 </div>
 
                 <div class="office-box">
-                    <div class="office-title">Registered Office</div>
+                    <div class="office-title">Head Office</div>
                     <p>504, Sahitya Business Park</p>
                     <p>SP Ring Road, Nikol</p>
                     <p>Ahmedabad - 382350, INDIA</p>
                 </div>
 
                 <div class="office-box">
-                    <div class="office-title">Work place</div>
+                    <div class="office-title">Factory Workshop</div>
                     <p>Plot No. E-377 & 378</p>
                     <p>Sanand - II Industrial Estate</p>
                     <p>Bol GIDC, Sanand</p>
@@ -446,9 +519,16 @@
 
             <!-- CTA Buttons -->
             <div class="cta-buttons">
-                <a href="tel:+919099941311" class="btn btn-primary">📞 Call Now</a>
-                <a href="mailto:sshah@coninfra.in" class="btn btn-secondary">📧 Send Email</a>
-               
+                <!-- Top row: Call Now and Send Email -->
+                <div class="buttons-row">
+                    <a href="tel:+919099941311" class="btn btn-primary">📞 Call Now</a>
+                    <a href="mailto:sshah@coninfra.in" class="btn btn-secondary">📧 Send Email</a>
+                </div>
+                
+                <!-- Bottom: Save Contact Details (Full Width, Centered) -->
+                <button onclick="downloadVCard()" class="btn btn-save">
+                    💾 Save Contact Details
+                </button>
             </div>
         </div>
 
