@@ -286,16 +286,130 @@
             opacity: 0.85;
         }
 
-        /* Save Contact Details button - full width */
-        .btn-save {
+        /* Bottom buttons - full width */
+        .btn-full {
             width: 100%;
             background: #B8282E;
             color: white;
         }
 
-        .btn-save:active {
+        .btn-full:active {
             opacity: 0.85;
             transform: scale(0.98);
+        }
+
+        /* Bottom buttons row */
+        .buttons-bottom-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-full-half {
+            flex: 1;
+            background: #B8282E;
+            color: white;
+        }
+
+        .btn-full-half:active {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+
+        /* Modal for share options */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            max-width: 500px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 20px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: #B8282E;
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .share-options {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #333;
+            background: white;
+        }
+
+        .share-option:active {
+            background: #f5f5f5;
+            border-color: #B8282E;
+        }
+
+        .share-icon {
+            font-size: 1.5em;
+            min-width: 30px;
+        }
+
+        .share-text {
+            flex: 1;
+            font-weight: 600;
         }
 
         /* Footer */
@@ -314,7 +428,7 @@
         }
 
         /* Animations */
-        @keyframes fadeIn {
+        @keyframes fadeInSection {
             from {
                 opacity: 0;
                 transform: translateY(10px);
@@ -326,7 +440,7 @@
         }
 
         .section {
-            animation: fadeIn 0.5s ease-out;
+            animation: fadeInSection 0.5s ease-out;
         }
 
         /* Mobile optimizations */
@@ -377,7 +491,6 @@
                 padding: 20px;
             }
 
-            /* Keep buttons in row on desktop */
             .buttons-row {
                 flex-direction: row;
                 gap: 10px;
@@ -387,9 +500,12 @@
                 flex: 1;
             }
 
-            .btn-save {
-                width: 100%;
-                flex: none;
+            .buttons-bottom-row {
+                flex-direction: row;
+            }
+
+            .btn-full-half {
+                flex: 1;
             }
         }
 
@@ -417,27 +533,82 @@
     </style>
 
     <script>
-function downloadVCard() {
-    const vCardData = `BEGIN:VCARD
+        // Download vCard (Contact Card)
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
 VERSION:3.0
 FN:Saumil Shah
 ORG:Coninfra Machinery Pvt. Ltd.
 TITLE:Managing Director
 TEL;TYPE=CELL:+919099941311
 EMAIL:sshah@coninfra.in
+URL:https://www.coninfra.in
 END:VCARD`;
 
-    const blob = new Blob([vCardData], { type: 'text/vcard' });
-    const url = window.URL.createObjectURL(blob);
+            // Create blob
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'Saumil_Shah_Coninfra.vcf');
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
 
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'Saumil_Shah.vcf';
-    a.click();
+        // Open share modal
+        function openShareModal() {
+            document.getElementById('shareModal').style.display = 'block';
+        }
 
-    window.URL.revokeObjectURL(url);
-}
-</script>
+        // Close share modal
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+
+        // Share via WhatsApp
+        function shareWhatsApp() {
+            const name = "Saumil Shah";
+            const phone = "+919099941311";
+            const company = "Coninfra Machinery Pvt. Ltd.";
+            const text = `Hi! I wanted to share contact details:\n\n${name}\nManaging Director\n${company}\n\nPhone: ${phone}\nEmail: sshah@coninfra.in\nWebsite: www.coninfra.in`;
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
+            closeShareModal();
+        }
+
+        // Share via Email
+        function shareEmail() {
+            const subject = "Contact: Saumil Shah - Coninfra Machinery";
+            const body = `Hi,\n\nI wanted to share the following contact:\n\nSaumil Shah\nManaging Director\nConinfra Machinery Pvt. Ltd.\n\nPhone: +91 90999 41311\nEmail: sshah@coninfra.in\nWebsite: www.coninfra.in\n\nProducts:\n- Asphalt Batch & Drum Mix Plants\n- Wet Mix Macadam and CTSB Plants\n- Concrete Batching Plants (Stationary & Mobile)\n- Bitumen Sprayers / Pressure Distributors\n- Hydraulic & Mechanical Road Sweepers\n\nBest Regards`;
+            const encoded = encodeURIComponent(body);
+            window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encoded}`, '_blank');
+            closeShareModal();
+        }
+
+        // Web Share API (if available)
+        function shareWeb() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Saumil Shah - Coninfra Machinery',
+                    text: 'Saumil Shah\nManaging Director\nPhone: +91 90999 41311\nEmail: sshah@coninfra.in\nWebsite: www.coninfra.in',
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            }
+            closeShareModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('shareModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -525,10 +696,15 @@ END:VCARD`;
                     <a href="mailto:sshah@coninfra.in" class="btn btn-secondary">📧 Send Email</a>
                 </div>
                 
-                <!-- Bottom: Save Contact Details (Full Width, Centered) -->
-                <button onclick="downloadVCard()" class="btn btn-save">
-                    💾 Save Contact Details
-                </button>
+                <!-- Bottom row: Save and Share -->
+                <div class="buttons-bottom-row">
+                    <button onclick="downloadVCard()" class="btn btn-full-half">
+                        💾 Save Contact
+                    </button>
+                    <button onclick="openShareModal()" class="btn btn-full-half">
+                        📤 Share Details
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -536,6 +712,32 @@ END:VCARD`;
         <div class="footer">
             <p>&copy; 2026 Coninfra Machinery Pvt. Ltd.</p>
             <p>All Rights Reserved</p>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📤 Share Details</h2>
+                <button class="close-btn" onclick="closeShareModal()">✕</button>
+            </div>
+            <div class="share-options">
+                <button class="share-option" onclick="shareWhatsApp()">
+                    <span class="share-icon">💬</span>
+                    <span class="share-text">Share via WhatsApp</span>
+                </button>
+                
+                <button class="share-option" onclick="shareEmail()">
+                    <span class="share-icon">📧</span>
+                    <span class="share-text">Share via Email</span>
+                </button>
+                
+                <button class="share-option" onclick="shareWeb()">
+                    <span class="share-icon">🔗</span>
+                    <span class="share-text">More Sharing Options</span>
+                </button>
+            </div>
         </div>
     </div>
 </body>
