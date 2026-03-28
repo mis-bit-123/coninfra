@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Hardik Patel - Coninfra Machinery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f5f5;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            padding: 12px;
+        }
+
+        .container {
+            max-width: 100%;
+            width: 100%;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Header Section */
+        .header {
+            background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
+            color: white;
+            padding: 24px 16px;
+            text-align: center;
+        }
+
+        .company-name {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            opacity: 0.95;
+        }
+
+        .tagline {
+            font-size: 0.75em;
+            letter-spacing: 2px;
+            opacity: 0.85;
+            margin-bottom: 12px;
+        }
+
+        /* Person Card */
+        .person-card {
+            background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
+            color: white;
+            padding: 20px 16px;
+            text-align: center;
+            margin: -16px 0 0 0;
+        }
+
+        .person-name {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-bottom: 6px;
+            line-height: 1.2;
+        }
+
+        .person-position {
+            font-size: 0.9em;
+            opacity: 0.95;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 16px;
+        }
+
+        /* Contact Details */
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #B8282E;
+            min-height: 50px;
+        }
+
+        .contact-icon {
+            font-size: 1.4em;
+            min-width: 30px;
+        }
+
+        .contact-item a {
+            color: #B8282E;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            word-break: break-all;
+            flex: 1;
+        }
+
+        .contact-item a:active {
+            opacity: 0.7;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            color: #B8282E;
+            font-size: 1.15em;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 3px solid #B8282E;
+            padding-bottom: 8px;
+            font-weight: bold;
+        }
+
+        /* Office Box */
+        .office-box {
+            background: #f8f9fa;
+            padding: 14px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid #B8282E;
+        }
+
+        .office-title {
+            color: #B8282E;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .office-box p {
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 3px;
+            font-size: 0.9em;
+        }
+
+        /* Products List */
+        .products-list {
+            background: #f8f9fa;
+            padding: 14px;
+            border-radius: 10px;
+            border-left: 4px solid #B8282E;
+        }
+
+        .products-list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .products-list li {
+            color: #333;
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            font-size: 0.9em;
+            line-height: 1.5;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .products-list li:last-child {
+            border-bottom: none;
+        }
+
+        .products-list li:before {
+            content: "✓";
+            color: #B8282E;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.1em;
+        }
+
+        /* Website Section */
+        .website-section {
+            background: linear-gradient(135deg, #B8282E 0%, #8B1F24 100%);
+            color: white;
+            padding: 16px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .website-label {
+            font-size: 1em;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .website-link {
+            display: inline-block;
+            background: white;
+            color: #B8282E;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-top: 8px;
+            transition: all 0.2s;
+            word-break: break-all;
+            max-width: 90%;
+        }
+
+        .website-link:active {
+            opacity: 0.8;
+        }
+
+        /* CTA Buttons Container */
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Two-column button wrapper for Call Now and Send Email */
+        .buttons-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: none;
+            font-size: 0.95em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 50px;
+        }
+
+        .btn-primary {
+            background: #B8282E;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:active {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #B8282E;
+            border: 2px solid #B8282E;
+            flex: 1;
+        }
+
+        .btn-secondary:active {
+            background: #f5f5f5;
+            opacity: 0.85;
+        }
+
+        /* Bottom buttons - full width */
+        .btn-full {
+            width: 100%;
+            background: #B8282E;
+            color: white;
+        }
+
+        .btn-full:active {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+
+        /* Bottom buttons row */
+        .buttons-bottom-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .btn-full-half {
+            flex: 1;
+            background: #B8282E;
+            color: white;
+        }
+
+        .btn-full-half:active {
+            opacity: 0.85;
+            transform: scale(0.98);
+        }
+
+        /* Modal for share options */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: auto;
+            padding: 0;
+            width: 100%;
+            max-width: 500px;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            border-radius: 16px 16px 0 0;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .modal-header {
+            padding: 20px 16px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            color: #B8282E;
+            font-size: 1.1em;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .share-options {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .share-option:active {
+            background: #f5f5f5;
+            border-color: #B8282E;
+        }
+
+        .share-icon {
+            font-size: 1.5em;
+            min-width: 30px;
+        }
+
+        .share-text {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f0f0f0;
+            padding: 14px 16px;
+            text-align: center;
+            color: #666;
+            font-size: 0.85em;
+            border-top: 2px solid #B8282E;
+        }
+
+        .footer p {
+            margin: 4px 0;
+            line-height: 1.4;
+        }
+
+        /* Animations */
+        @keyframes fadeInSection {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            animation: fadeInSection 0.5s ease-out;
+        }
+
+        /* Mobile optimizations */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+
+            .content {
+                padding: 12px;
+            }
+
+            .person-name {
+                font-size: 1.6em;
+            }
+
+            .btn {
+                font-size: 0.9em;
+                padding: 12px 14px;
+            }
+
+            .section-title {
+                font-size: 1.05em;
+            }
+
+            .contact-item, .office-box, .products-list {
+                padding: 12px;
+            }
+
+            .buttons-row {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .btn {
+                flex: 1;
+            }
+        }
+
+        /* Tablet/Desktop */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+                margin: 20px auto;
+            }
+
+            body {
+                padding: 20px;
+            }
+
+            .buttons-row {
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .btn {
+                flex: 1;
+            }
+
+            .buttons-bottom-row {
+                flex-direction: row;
+            }
+
+            .btn-full-half {
+                flex: 1;
+            }
+        }
+
+        /* Safe area for notched devices */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(12px, env(safe-area-inset-left));
+                padding-right: max(12px, env(safe-area-inset-right));
+                padding-top: max(12px, env(safe-area-inset-top));
+                padding-bottom: max(12px, env(safe-area-inset-bottom));
+            }
+        }
+
+        /* Company Name */
+        .company-name-section {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .company-name-section h2 {
+            color: #B8282E;
+            font-size: 1.2em;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        // Download vCard (Contact Card)
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Hardik Patel
+ORG:Coninfra Machinery Pvt. Ltd.
+TITLE:Director - Business Development
+TEL;TYPE=CELL:+919099941641
+EMAIL:hpatel@coninfra.in
+URL:https://www.coninfra.in
+END:VCARD`;
+
+            // Create blob
+            const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            const url = URL.createObjectURL(blob);
+            
+            link.setAttribute('href', url);
+            link.setAttribute('download', 'Hardik_Patel_Coninfra.vcf');
+            link.style.visibility = 'hidden';
+            
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Open share modal
+        function openShareModal() {
+            document.getElementById('shareModal').style.display = 'block';
+        }
+
+        // Close share modal
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
+        }
+
+        // Share via WhatsApp
+        function shareWhatsApp() {
+            const name = "Hardik Patel";
+            const phone = "+919099941641";
+            const company = "Coninfra Machinery Pvt. Ltd.";
+            const text = `Hi! I wanted to share contact details:\n\n${name}\nDirector - Business Development\n${company}\n\nPhone: ${phone}\nEmail: hpatel@coninfra.in\nWebsite: www.coninfra.in`;
+            const encoded = encodeURIComponent(text);
+            window.open(`https://wa.me/?text=${encoded}`, '_blank');
+            closeShareModal();
+        }
+
+        // Share via Email
+        function shareEmail() {
+            const subject = "Contact: Hardik Patel - Coninfra Machinery";
+            const body = `Hi,\n\nI wanted to share the following contact:\n\nHardik Patel\nDirector - Business Development\nConinfra Machinery Pvt. Ltd.\n\nPhone: +91 90999 41641\nEmail: hpatel@coninfra.in\nWebsite: www.coninfra.in\n\nProducts:\n- Asphalt Batch & Drum Mix Plants\n- Wet Mix Macadam and CTSB Plants\n- Concrete Batching Plants (Stationary & Mobile)\n- Bitumen Sprayers / Pressure Distributors\n- Hydraulic & Mechanical Road Sweepers\n\nBest Regards`;
+            const encoded = encodeURIComponent(body);
+            window.open(`mailto:?subject=${encodeURIComponent(subject)}&body=${encoded}`, '_blank');
+            closeShareModal();
+        }
+
+        // Web Share API (if available)
+        function shareWeb() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Hardik Patel - Coninfra Machinery',
+                    text: 'Hardik Patel\nDirector - Business Development\nPhone: +91 90999 41641\nEmail: hpatel@coninfra.in\nWebsite: www.coninfra.in',
+                    url: window.location.href
+                }).catch(err => console.log('Error sharing:', err));
+            }
+            closeShareModal();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('shareModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+        </div>
+
+        <!-- Person Card -->
+        <div class="person-card">
+            <div class="person-name">Hardik Patel</div>
+            <div class="person-position">Director - Business Development</div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content">
+            <!-- Contact Details -->
+            <div class="contact-details">
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <a href="tel:+919099941641">+91 90999 41641</a>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📧</span>
+                    <a href="mailto:hpatel@coninfra.in">hpatel@coninfra.in</a>
+                </div>
+            </div>
+
+            <!-- Company Name -->
+            <div class="company-name-section">
+                <h2>Coninfra Machinery Pvt. Ltd.</h2>
+            </div>
+
+            <!-- Offices Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>🏢</span> Office Locations
+                </div>
+
+                <div class="office-box">
+                    <div class="office-title">Head Office</div>
+                    <p>504, Sahitya Business Park</p>
+                    <p>SP Ring Road, Nikol</p>
+                    <p>Ahmedabad - 382350, INDIA</p>
+                </div>
+
+                <div class="office-box">
+                    <div class="office-title">Factory Workshop</div>
+                    <p>Plot No. E-377 & 378</p>
+                    <p>Sanand - II Industrial Estate</p>
+                    <p>Bol GIDC, Sanand</p>
+                    <p>Gujarat 382110, India</p>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div class="section">
+                <div class="section-title">
+                    <span>⚙️</span> Our Product Range
+                </div>
+
+                <div class="products-list">
+                    <ul>
+                        <li>Asphalt Batch & Drum Mix Plants</li>
+                        <li>Wet Mix Macadam and CTSB Plants</li>
+                        <li>Concrete Batching Plants (Stationary & Mobile)</li>
+                        <li>Bitumen Sprayers / Pressure Distributors</li>
+                        <li>Hydraulic & Mechanical Road Sweepers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Website Section -->
+            <div class="website-section">
+                <div class="website-label">🌐 Visit Our Website</div>
+                <a href="https://www.coninfra.in" target="_blank" class="website-link">
+                    www.coninfra.in
+                </a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="cta-buttons">
+                <!-- Top row: Call Now and Send Email -->
+                <div class="buttons-row">
+                    <a href="tel:+919099941641" class="btn btn-primary">📞 Call Now</a>
+                    <a href="mailto:hpatel@coninfra.in" class="btn btn-secondary">📧 Send Email</a>
+                </div>
+                
+                <!-- Bottom row: Save and Share -->
+                <div class="buttons-bottom-row">
+                    <button onclick="downloadVCard()" class="btn btn-full-half">
+                        💾 Save Contact
+                    </button>
+                    <button onclick="openShareModal()" class="btn btn-full-half">
+                        📤 Share Details
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2026 Coninfra Machinery Pvt. Ltd.</p>
+            <p>All Rights Reserved</p>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>📤 Share Details</h2>
+                <button class="close-btn" onclick="closeShareModal()">✕</button>
+            </div>
+            <div class="share-options">
+                <button class="share-option" onclick="shareWhatsApp()">
+                    <span class="share-icon">💬</span>
+                    <span class="share-text">Share via WhatsApp</span>
+                </button>
+                
+                <button class="share-option" onclick="shareEmail()">
+                    <span class="share-icon">📧</span>
+                    <span class="share-text">Share via Email</span>
+                </button>
+                
+                <button class="share-option" onclick="shareWeb()">
+                    <span class="share-icon">🔗</span>
+                    <span class="share-text">More Sharing Options</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
